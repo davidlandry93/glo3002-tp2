@@ -6,15 +6,26 @@ function resetTimer() {
     timer = window.setInterval(scrollOnce, 2000);
 }
 
+function carouselItemWidth() {
+    return document.getElementsByClassName('carousel-item')[0].offsetWidth;
+}
+
 function scrollOnce() {
-    var carouselItemWidth = document.getElementsByClassName('carousel-item')[0].offsetWidth;
-    document.getElementsByClassName('carousel-viewport')[0].scrollLeft += carouselItemWidth;
+    var itemWidth = carouselItemWidth();
+    document.getElementsByClassName('carousel-viewport')[0].scrollLeft += itemWidth;
     resetTimer();
 }
 
 function scrollBackwardsOnce() {
-    var carouselItemWidth = document.getElementsByClassName('carousel-item')[0].offsetWidth;
-    document.getElementsByClassName('carousel-viewport')[0].scrollLeft -= carouselItemWidth;
+    var itemWidth = carouselItemWidth();
+    document.getElementsByClassName('carousel-viewport')[0].scrollLeft -= itemWidth;
+    resetTimer();
+}
+
+function scrollToPicture(index) {
+    var itemWidth = carouselItemWidth();
+
+    document.getElementsByClassName('carousel-viewport')[0].scrollLeft = index * itemWidth;
     resetTimer();
 }
 
@@ -24,7 +35,7 @@ function bullets(pictureIndex, nOfPictures) {
         if(i === pictureIndex) {
             stringOfBullets += '◉';
         } else {
-            stringOfBullets += '○';
+            stringOfBullets += '<span onclick="scrollToPicture(' + i + ')">○</span>';
         }
     }
     return stringOfBullets + '</div>';

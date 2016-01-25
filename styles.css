@@ -37,6 +37,7 @@ h1 {
 }
 
 .carousel-item {
+    position: relative;
     display: block;
     width: 1200px;
     height: 520px;
@@ -45,6 +46,19 @@ h1 {
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.navigation-bullets {
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    margin: auto;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
 }
 
 .navigation-button {
